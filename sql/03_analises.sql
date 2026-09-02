@@ -45,3 +45,10 @@ INNER JOIN produtos ON produtos.id = vendas.produto_id
 GROUP BY clientes.id
 HAVING count(vendas.quantidade) > 1
 ORDER BY avg(produtos.preco * vendas.quantidade) DESC;
+
+-- 6. Quais produtos estão com estoque baixo (menos de 5 unidades)?
+
+SELECT nome, estoque
+FROM produtos
+WHERE estoque < 5
+ORDER BY estoque ASC;
