@@ -20,7 +20,7 @@ clientes ← vendas → produtos
 Implementei integridade referencial com `FOREIGN KEY`, garantindo que toda
 venda só possa referenciar clientes e produtos que realmente existem no
 banco (testei isso na prática tentando inserir uma venda com cliente
-inexistente — o PostgreSQL bloqueou corretamente ✅).
+inexistente — o PostgreSQL bloqueou corretamente ).
 
 Os scripts SQL completos estão na pasta [`sql/`](./sql).
 
@@ -94,14 +94,32 @@ ORDER BY estoque ASC;
 > `estoque` (via `ALTER TABLE ADD COLUMN`), essa pergunta virou possível.
 > É um filtro simples de `WHERE`, mas em um cenário real ajudaria a
 > identificar produtos que precisam de reposição.
- 
+
+ ## 🐍 Versão 2 — Python + Pandas
+
+Depois de consolidar as análises em SQL puro, avancei o projeto conectando
+Python diretamente no PostgreSQL, usando `psycopg2` para a conexão e
+`pandas` para transformar os resultados das queries em DataFrames
+exportáveis.
+
+O script percorre um dicionário de queries e gera automaticamente um
+arquivo `.csv` para cada análise — um pequeno passo em direção a
+automação de pipeline de dados.
+
+Credenciais do banco são carregadas de um arquivo `.env` (fora do
+controle de versão), usando `python-dotenv`, para não expor a senha no
+código.
+
+O script está em [`conexao.py`](./conexao.py).
+
 ##  Ferramentas usadas
 
 - PostgreSQL
 - DBeaver
-
+- Python (psycopg2, pandas, python-dotenv)
+- 
 ##  Planos futuros
 
 - Trabalhar com um dataset mais próximo da realidade
-- Adicionar Python + Pandas para limpeza e análise (Versão 2)
 - Visualização/dashboard (Versão 3)
+- Evoluir para um pipeline simples (ETL) — Versão 4
