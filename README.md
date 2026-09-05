@@ -95,7 +95,7 @@ ORDER BY estoque ASC;
 > É um filtro simples de `WHERE`, mas em um cenário real ajudaria a
 > identificar produtos que precisam de reposição.
 
- ## 🐍 Versão 2 — Python + Pandas
+ ## Versão 2 — Python + Pandas
 
 Depois de consolidar as análises em SQL puro, avancei o projeto conectando
 Python diretamente no PostgreSQL, usando `psycopg2` para a conexão e
@@ -117,7 +117,7 @@ O script está em [`conexao.py`](./conexao.py).
 - PostgreSQL
 - DBeaver
 - Python (psycopg2, pandas, python-dotenv)
-- 
+
 ##  Planos futuros
 
 - Trabalhar com um dataset mais próximo da realidade
