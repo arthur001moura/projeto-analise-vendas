@@ -81,6 +81,20 @@ ORDER BY avg(produtos.preco * vendas.quantidade) DESC;
 > pergunta 3: um cliente pode não ser quem mais gastou no total, mas ter
 > o maior ticket médio (compra pouco, mas caro).
 
+### 6. Quais produtos estão com estoque baixo (menos de 5 unidades)?
+ 
+```sql
+SELECT nome, estoque
+FROM produtos
+WHERE estoque < 5
+ORDER BY estoque ASC;
+```
+ 
+>  Depois que expandi o schema adicionando as colunas `categoria` e
+> `estoque` (via `ALTER TABLE ADD COLUMN`), essa pergunta virou possível.
+> É um filtro simples de `WHERE`, mas em um cenário real ajudaria a
+> identificar produtos que precisam de reposição.
+ 
 ##  Ferramentas usadas
 
 - PostgreSQL
@@ -88,7 +102,6 @@ ORDER BY avg(produtos.preco * vendas.quantidade) DESC;
 
 ##  Planos futuros
 
-- Expandir o schema com `categoria` e `estoque` em produtos
 - Trabalhar com um dataset mais próximo da realidade
 - Adicionar Python + Pandas para limpeza e análise (Versão 2)
 - Visualização/dashboard (Versão 3)
